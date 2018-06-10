@@ -14,7 +14,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Index()
         {
             List<organizer> organizerlist = new List<organizer>();
-            using (CMSAPTADBModels db = new CMSAPTADBModels())
+            using (LAPTASModels db = new LAPTASModels())
             {
                 organizerlist = db.organizers.ToList<organizer>();
             }
@@ -41,20 +41,29 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         // POST: /Organizer/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(organizer organizerModel)
         {
+
+
+
             try
             {
-                // TODO: Add insert logic here
+                using (LAPTASModels db = new LAPTASModels())
+                {
+                    db.organizers.Add(organizerModel);
+                    db.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 
+
+       
         //
         // GET: /Organizer/Edit/5
 

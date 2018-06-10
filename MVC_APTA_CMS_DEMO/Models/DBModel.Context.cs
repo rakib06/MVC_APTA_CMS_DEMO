@@ -13,10 +13,10 @@ namespace MVC_APTA_CMS_DEMO.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CMSAPTADBModels : DbContext
+    public partial class LAPTASModels : DbContext
     {
-        public CMSAPTADBModels()
-            : base("name=CMSAPTADBModels")
+        public LAPTASModels()
+            : base("name=LAPTASModels")
         {
         }
     
@@ -30,5 +30,11 @@ namespace MVC_APTA_CMS_DEMO.Models
         public DbSet<member> members { get; set; }
         public DbSet<organizer> organizers { get; set; }
         public DbSet<teams_paper> teams_papers { get; set; }
+
+       
+
     }
+
+
+
 }

@@ -14,7 +14,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Index()
         {
             List<conference_event> conference_eventlist = new List<conference_event>();
-            using (CMSAPTADBModels db = new CMSAPTADBModels())
+            using (LAPTASModels db = new LAPTASModels())
             {
                 conference_eventlist = db.conference_events.ToList<conference_event>();
             }
@@ -41,17 +41,22 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         // POST: /Conference/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(conference_event conferenceModel)
         {
+
             try
             {
-                // TODO: Add insert logic here
-
+                using (LAPTASModels db = new LAPTASModels())
+                {
+                    db.conference_events.Add(conferenceModel);
+                    db.SaveChanges();
+                }
+                
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 

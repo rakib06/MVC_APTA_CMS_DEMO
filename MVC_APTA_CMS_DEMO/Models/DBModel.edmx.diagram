@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f93ccbb1ef884b6e8c87d738462bd87d" Name="Diagram1">
-        <EntityTypeShape EntityType="dbcmsModel.apta_admin" Width="1.5" PointX="6.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbcmsModel.conference_event" Width="1.5" PointX="0.875" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbcmsModel.member" Width="1.5" PointX="8.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbcmsModel.organizer" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbcmsModel.teams_paper" Width="1.5" PointX="3.125" PointY="3.25" IsExpanded="true" />
-        <AssociationConnector Association="dbcmsModel.cccc" ManuallyRouted="false" />
-        <AssociationConnector Association="dbcmsModel.orgnaizerpkforconf" ManuallyRouted="false" />
+      <Diagram DiagramId="92a6d9a4be2a430aac2ce5fcad39de49" Name="Diagram1">
+        <EntityTypeShape EntityType="dbcmsModel.apta_admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbcmsModel.conference_event" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbcmsModel.member" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbcmsModel.organizer" Width="1.5" PointX="3.625" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbcmsModel.teams_paper" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="dbcmsModel.tesingfk" ManuallyRouted="false" />
+        <AssociationConnector Association="dbcmsModel.testingagi" ManuallyRouted="false" />
         <AssociationConnector Association="dbcmsModel.teampk" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

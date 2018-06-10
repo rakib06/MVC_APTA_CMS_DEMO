@@ -14,7 +14,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Index()
         {
             List<member> memberlist = new List<member>();
-            using (CMSAPTADBModels db = new CMSAPTADBModels())
+            using (LAPTASModels db = new LAPTASModels())
             {
                 memberlist = db.members.ToList<member>();
             }
@@ -41,17 +41,21 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         // POST: /Attende/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(member membernmodel)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (LAPTASModels db = new LAPTASModels())
+                {
+                    db.members.Add(membernmodel);
+                    db.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 

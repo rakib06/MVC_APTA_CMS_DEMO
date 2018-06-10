@@ -12,105 +12,99 @@
     <title>Create</title>
 </head>
 <body>
-    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-    
-        <fieldset>
-            <legend>teams_paper</legend>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.DelegatesID)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.DelegatesID)
-                @Html.ValidationMessageFor(model => model.DelegatesID)
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.ConferenceID)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.ConferenceID)
-                @Html.ValidationMessageFor(model => model.ConferenceID)
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.OrganizationName)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.OrganizationName)
-                @Html.ValidationMessageFor(model => model.OrganizationName)
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.TeamName)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.TeamName)
-                @Html.ValidationMessageFor(model => model.TeamName)
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.OrganizationType)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.OrganizationType)
-                @Html.ValidationMessageFor(model => model.OrganizationType)
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.PaperName)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.PaperName)
-                @Html.ValidationMessageFor(model => model.PaperName)
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.PaperLink)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.PaperLink)
-                @Html.ValidationMessageFor(model => model.PaperLink)
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.PaperInbrief)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.PaperInbrief)
-                @Html.ValidationMessageFor(model => model.PaperInbrief)
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.PaperDomains)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.PaperDomains)
-                @Html.ValidationMessageFor(model => model.PaperDomains)
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.approve)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.approve)
-                @Html.ValidationMessageFor(model => model.approve)
-            </div>
-    
-            <p>
-                <input type="submit" value="Create" />
-            </p>
-        </fieldset>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+@{Html.RenderAction("testNav", "Home");}
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>teams_paper</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DelegatesID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DelegatesID)
+            @Html.ValidationMessageFor(model => model.DelegatesID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TeamName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TeamName)
+            @Html.ValidationMessageFor(model => model.TeamName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OrganizationType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OrganizationType)
+            @Html.ValidationMessageFor(model => model.OrganizationType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PaperName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PaperName)
+            @Html.ValidationMessageFor(model => model.PaperName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PaperLink)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PaperLink)
+            @Html.ValidationMessageFor(model => model.PaperLink)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PaperInbrief)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PaperInbrief)
+            @Html.ValidationMessageFor(model => model.PaperInbrief)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PaperDomains)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PaperDomains)
+            @Html.ValidationMessageFor(model => model.PaperDomains)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.approve)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.approve)
+            @Html.ValidationMessageFor(model => model.approve)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConferenceName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ConferenceName)
+            @Html.ValidationMessageFor(model => model.ConferenceName)
+        </div>
+
+        <p>
+            <input type="submit" value="Create"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 </body>
 </html>

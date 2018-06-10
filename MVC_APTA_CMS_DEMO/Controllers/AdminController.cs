@@ -15,10 +15,13 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Index()
         {
             List<apta_admin> adminlist = new List<apta_admin>();
-            using (CMSAPTADBModels db =new CMSAPTADBModels())
+
+            using (LAPTASModels db = new LAPTASModels())
             {
                 adminlist = db.apta_admins.ToList<apta_admin>();
             }
+             
+            
             return View(adminlist);
         }
 
@@ -42,17 +45,21 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         // POST: /Admin/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(apta_admin adminmodel)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (LAPTASModels db = new LAPTASModels())
+                {
+                    db.apta_admins.Add(adminmodel);
+                    db.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 

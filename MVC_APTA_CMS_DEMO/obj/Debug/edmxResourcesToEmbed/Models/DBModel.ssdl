@@ -14,15 +14,15 @@
   </EntityType>
   <EntityType Name="conference_event">
     <Key>
-      <PropertyRef Name="ConferenceID" />
+      <PropertyRef Name="Name" />
     </Key>
-    <Property Name="ConferenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="45" />
-    <Property Name="StartDate" Type="varchar" MaxLength="45" />
-    <Property Name="EndDate" Type="varchar" MaxLength="45" />
+    <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
     <Property Name="Chairman" Type="varchar" MaxLength="45" />
     <Property Name="Locations" Type="varchar" MaxLength="45" />
     <Property Name="short_description" Type="varchar" MaxLength="45" />
+    <Property Name="last_reg_date" Type="date" />
   </EntityType>
   <EntityType Name="member">
     <Key>
@@ -49,16 +49,15 @@
     <Property Name="Phone" Type="varchar" MaxLength="45" />
     <Property Name="Description" Type="text" />
     <Property Name="Password" Type="varchar" MaxLength="45" />
-    <Property Name="ConferenceID" Type="int" />
-    <Property Name="approve" Type="int" Nullable="false" />
+    <Property Name="approve" Type="int" />
+    <Property Name="conferenceName" Type="varchar" MaxLength="45" />
+    <Property Name="reg_date" Type="timestamp" Precision="0" />
   </EntityType>
   <EntityType Name="teams_paper">
     <Key>
       <PropertyRef Name="DelegatesID" />
     </Key>
     <Property Name="DelegatesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ConferenceID" Type="int" Nullable="false" />
-    <Property Name="OrganizationName" Type="varchar" MaxLength="45" />
     <Property Name="TeamName" Type="varchar" MaxLength="45" />
     <Property Name="OrganizationType" Type="varchar" MaxLength="45" />
     <Property Name="PaperName" Type="varchar" MaxLength="45" />
@@ -66,33 +65,9 @@
     <Property Name="PaperInbrief" Type="varchar" MaxLength="45" />
     <Property Name="PaperDomains" Type="varchar" MaxLength="45" />
     <Property Name="approve" Type="int" />
+    <Property Name="ConferenceName" Type="varchar" MaxLength="45" />
+    <Property Name="reg_date" Type="timestamp" Precision="0" />
   </EntityType>
-  <Association Name="cccc">
-    <End Role="conference_event" Type="Self.conference_event" Multiplicity="1" />
-    <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="conference_event">
-        <PropertyRef Name="ConferenceID" />
-      </Principal>
-      <Dependent Role="teams_paper">
-        <PropertyRef Name="ConferenceID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="orgnaizerpkforconf">
-    <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="organizer" Type="Self.organizer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="conference_event">
-        <PropertyRef Name="ConferenceID" />
-      </Principal>
-      <Dependent Role="organizer">
-        <PropertyRef Name="ConferenceID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="teampk">
     <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="1" />
     <End Role="member" Type="Self.member" Multiplicity="*" />
@@ -105,23 +80,47 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="tesingfk">
+    <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1" />
+    <End Role="organizer" Type="Self.organizer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="conference_event">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="organizer">
+        <PropertyRef Name="conferenceName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="testingagi">
+    <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1" />
+    <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="conference_event">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="teams_paper">
+        <PropertyRef Name="ConferenceName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="dbcmsModelStoreContainer">
     <EntitySet Name="apta_admin" EntityType="Self.apta_admin" Schema="dbcms" store:Type="Tables" />
     <EntitySet Name="conference_event" EntityType="Self.conference_event" Schema="dbcms" store:Type="Tables" />
     <EntitySet Name="member" EntityType="Self.member" Schema="dbcms" store:Type="Tables" />
     <EntitySet Name="organizer" EntityType="Self.organizer" Schema="dbcms" store:Type="Tables" />
     <EntitySet Name="teams_paper" EntityType="Self.teams_paper" Schema="dbcms" store:Type="Tables" />
-    <AssociationSet Name="cccc" Association="Self.cccc">
-      <End Role="conference_event" EntitySet="conference_event" />
-      <End Role="teams_paper" EntitySet="teams_paper" />
-    </AssociationSet>
-    <AssociationSet Name="orgnaizerpkforconf" Association="Self.orgnaizerpkforconf">
-      <End Role="conference_event" EntitySet="conference_event" />
-      <End Role="organizer" EntitySet="organizer" />
-    </AssociationSet>
     <AssociationSet Name="teampk" Association="Self.teampk">
       <End Role="teams_paper" EntitySet="teams_paper" />
       <End Role="member" EntitySet="member" />
+    </AssociationSet>
+    <AssociationSet Name="tesingfk" Association="Self.tesingfk">
+      <End Role="conference_event" EntitySet="conference_event" />
+      <End Role="organizer" EntitySet="organizer" />
+    </AssociationSet>
+    <AssociationSet Name="testingagi" Association="Self.testingagi">
+      <End Role="conference_event" EntitySet="conference_event" />
+      <End Role="teams_paper" EntitySet="teams_paper" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

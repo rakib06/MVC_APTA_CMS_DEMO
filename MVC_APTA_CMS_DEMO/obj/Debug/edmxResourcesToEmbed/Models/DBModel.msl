@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="dbcmsModelStoreContainer" CdmEntityContainer="CMSAPTADBModels">
+  <EntityContainerMapping StorageEntityContainer="dbcmsModelStoreContainer" CdmEntityContainer="LAPTASModels">
     <EntitySetMapping Name="apta_admin">
       <EntityTypeMapping TypeName="dbcmsModel.apta_admin">
         <MappingFragment StoreEntitySet="apta_admin">
@@ -17,13 +17,13 @@
     <EntitySetMapping Name="conference_event">
       <EntityTypeMapping TypeName="dbcmsModel.conference_event">
         <MappingFragment StoreEntitySet="conference_event">
-          <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="Chairman" ColumnName="Chairman" />
           <ScalarProperty Name="Locations" ColumnName="Locations" />
           <ScalarProperty Name="short_description" ColumnName="short_description" />
+          <ScalarProperty Name="last_reg_date" ColumnName="last_reg_date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -52,8 +52,9 @@
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
           <ScalarProperty Name="approve" ColumnName="approve" />
+          <ScalarProperty Name="conferenceName" ColumnName="conferenceName" />
+          <ScalarProperty Name="reg_date" ColumnName="reg_date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -61,8 +62,6 @@
       <EntityTypeMapping TypeName="dbcmsModel.teams_paper">
         <MappingFragment StoreEntitySet="teams_paper">
           <ScalarProperty Name="DelegatesID" ColumnName="DelegatesID" />
-          <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
-          <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
           <ScalarProperty Name="TeamName" ColumnName="TeamName" />
           <ScalarProperty Name="OrganizationType" ColumnName="OrganizationType" />
           <ScalarProperty Name="PaperName" ColumnName="PaperName" />
@@ -70,6 +69,8 @@
           <ScalarProperty Name="PaperInbrief" ColumnName="PaperInbrief" />
           <ScalarProperty Name="PaperDomains" ColumnName="PaperDomains" />
           <ScalarProperty Name="approve" ColumnName="approve" />
+          <ScalarProperty Name="ConferenceName" ColumnName="ConferenceName" />
+          <ScalarProperty Name="reg_date" ColumnName="reg_date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

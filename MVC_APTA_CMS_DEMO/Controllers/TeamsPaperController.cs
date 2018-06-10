@@ -14,7 +14,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Index()
         {
             List<teams_paper> teams_paperlist = new List<teams_paper>();
-            using (CMSAPTADBModels db = new CMSAPTADBModels())
+            using (LAPTASModels db = new LAPTASModels())
             {
                 teams_paperlist = db.teams_papers.ToList<teams_paper>();
             }
@@ -34,24 +34,28 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new teams_paper());
         }
 
         //
         // POST: /TeamsPaper/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(teams_paper teamsPaperModel)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (LAPTASModels db = new LAPTASModels())
+                {
+                    db.teams_papers.Add(teamsPaperModel);
+                    db.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 
