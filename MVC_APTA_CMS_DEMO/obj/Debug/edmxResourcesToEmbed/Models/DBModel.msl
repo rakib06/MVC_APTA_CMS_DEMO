@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbcmsModelStoreContainer" CdmEntityContainer="CMSAPTADBModels">
+    <EntitySetMapping Name="apta_admin">
+      <EntityTypeMapping TypeName="dbcmsModel.apta_admin">
+        <MappingFragment StoreEntitySet="apta_admin">
+          <ScalarProperty Name="adminID" ColumnName="adminID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="conference_event">
+      <EntityTypeMapping TypeName="dbcmsModel.conference_event">
+        <MappingFragment StoreEntitySet="conference_event">
+          <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Chairman" ColumnName="Chairman" />
+          <ScalarProperty Name="Locations" ColumnName="Locations" />
+          <ScalarProperty Name="short_description" ColumnName="short_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="members">
+      <EntityTypeMapping TypeName="dbcmsModel.member">
+        <MappingFragment StoreEntitySet="member">
+          <ScalarProperty Name="AttendeeID" ColumnName="AttendeeID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DelegatesID" ColumnName="DelegatesID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="organizers">
+      <EntityTypeMapping TypeName="dbcmsModel.organizer">
+        <MappingFragment StoreEntitySet="organizer">
+          <ScalarProperty Name="OrganizerId" ColumnName="OrganizerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
+          <ScalarProperty Name="approve" ColumnName="approve" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teams_paper">
+      <EntityTypeMapping TypeName="dbcmsModel.teams_paper">
+        <MappingFragment StoreEntitySet="teams_paper">
+          <ScalarProperty Name="DelegatesID" ColumnName="DelegatesID" />
+          <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
+          <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="OrganizationType" ColumnName="OrganizationType" />
+          <ScalarProperty Name="PaperName" ColumnName="PaperName" />
+          <ScalarProperty Name="PaperLink" ColumnName="PaperLink" />
+          <ScalarProperty Name="PaperInbrief" ColumnName="PaperInbrief" />
+          <ScalarProperty Name="PaperDomains" ColumnName="PaperDomains" />
+          <ScalarProperty Name="approve" ColumnName="approve" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

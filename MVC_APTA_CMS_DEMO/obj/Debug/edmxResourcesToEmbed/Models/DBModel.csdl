@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbcmsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="apta_admin">
+    <Key>
+      <PropertyRef Name="adminID" />
+    </Key>
+    <Property Name="adminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="conference_event">
+    <Key>
+      <PropertyRef Name="ConferenceID" />
+    </Key>
+    <Property Name="ConferenceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="EndDate" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Chairman" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Locations" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="short_description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="teams_paper" Relationship="Self.cccc" FromRole="conference_event" ToRole="teams_paper" />
+    <NavigationProperty Name="organizers" Relationship="Self.orgnaizerpkforconf" FromRole="conference_event" ToRole="organizer" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="AttendeeID" />
+    </Key>
+    <Property Name="AttendeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="DelegatesID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="teams_paper" Relationship="Self.teampk" FromRole="member" ToRole="teams_paper" />
+  </EntityType>
+  <EntityType Name="organizer">
+    <Key>
+      <PropertyRef Name="OrganizerId" />
+    </Key>
+    <Property Name="OrganizerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Website" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="ConferenceID" Type="Int32" />
+    <Property Name="approve" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="conference_event" Relationship="Self.orgnaizerpkforconf" FromRole="organizer" ToRole="conference_event" />
+  </EntityType>
+  <EntityType Name="teams_paper">
+    <Key>
+      <PropertyRef Name="DelegatesID" />
+    </Key>
+    <Property Name="DelegatesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ConferenceID" Type="Int32" Nullable="false" />
+    <Property Name="OrganizationName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="TeamName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="OrganizationType" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PaperName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PaperLink" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PaperInbrief" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PaperDomains" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="approve" Type="Int32" />
+    <NavigationProperty Name="conference_event" Relationship="Self.cccc" FromRole="teams_paper" ToRole="conference_event" />
+    <NavigationProperty Name="members" Relationship="Self.teampk" FromRole="teams_paper" ToRole="member" />
+  </EntityType>
+  <Association Name="cccc">
+    <End Role="conference_event" Type="Self.conference_event" Multiplicity="1" />
+    <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="conference_event">
+        <PropertyRef Name="ConferenceID" />
+      </Principal>
+      <Dependent Role="teams_paper">
+        <PropertyRef Name="ConferenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="orgnaizerpkforconf">
+    <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="organizer" Type="Self.organizer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="conference_event">
+        <PropertyRef Name="ConferenceID" />
+      </Principal>
+      <Dependent Role="organizer">
+        <PropertyRef Name="ConferenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="teampk">
+    <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="1" />
+    <End Role="member" Type="Self.member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teams_paper">
+        <PropertyRef Name="DelegatesID" />
+      </Principal>
+      <Dependent Role="member">
+        <PropertyRef Name="DelegatesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CMSAPTADBModels" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="apta_admin" EntityType="Self.apta_admin" />
+    <EntitySet Name="conference_event" EntityType="Self.conference_event" />
+    <EntitySet Name="members" EntityType="Self.member" />
+    <EntitySet Name="organizers" EntityType="Self.organizer" />
+    <EntitySet Name="teams_paper" EntityType="Self.teams_paper" />
+    <AssociationSet Name="cccc" Association="Self.cccc">
+      <End Role="conference_event" EntitySet="conference_event" />
+      <End Role="teams_paper" EntitySet="teams_paper" />
+    </AssociationSet>
+    <AssociationSet Name="orgnaizerpkforconf" Association="Self.orgnaizerpkforconf">
+      <End Role="conference_event" EntitySet="conference_event" />
+      <End Role="organizer" EntitySet="organizers" />
+    </AssociationSet>
+    <AssociationSet Name="teampk" Association="Self.teampk">
+      <End Role="teams_paper" EntitySet="teams_paper" />
+      <End Role="member" EntitySet="members" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
