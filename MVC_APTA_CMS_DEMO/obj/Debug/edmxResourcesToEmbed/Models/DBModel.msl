@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="dbcmsModelStoreContainer" CdmEntityContainer="LAPTASModels">
+  <EntityContainerMapping StorageEntityContainer="dbcmsModelStoreContainer" CdmEntityContainer="ModelsCMS">
     <EntitySetMapping Name="apta_admin">
       <EntityTypeMapping TypeName="dbcmsModel.apta_admin">
         <MappingFragment StoreEntitySet="apta_admin">
@@ -24,6 +24,8 @@
           <ScalarProperty Name="Locations" ColumnName="Locations" />
           <ScalarProperty Name="short_description" ColumnName="short_description" />
           <ScalarProperty Name="last_reg_date" ColumnName="last_reg_date" />
+          <ScalarProperty Name="conferenceID" ColumnName="conferenceID" />
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -53,7 +55,7 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="approve" ColumnName="approve" />
-          <ScalarProperty Name="conferenceName" ColumnName="conferenceName" />
+          <ScalarProperty Name="conferenceId" ColumnName="conferenceId" />
           <ScalarProperty Name="reg_date" ColumnName="reg_date" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -69,7 +71,7 @@
           <ScalarProperty Name="PaperInbrief" ColumnName="PaperInbrief" />
           <ScalarProperty Name="PaperDomains" ColumnName="PaperDomains" />
           <ScalarProperty Name="approve" ColumnName="approve" />
-          <ScalarProperty Name="ConferenceName" ColumnName="ConferenceName" />
+          <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
           <ScalarProperty Name="reg_date" ColumnName="reg_date" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -14,7 +14,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Index()
         {
             List<organizer> organizerlist = new List<organizer>();
-            using (LAPTASModels db = new LAPTASModels())
+            using (ModelsCMS db = new ModelsCMS())
             {
                 organizerlist = db.organizers.ToList<organizer>();
             }
@@ -48,7 +48,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
             try
             {
-                using (LAPTASModels db = new LAPTASModels())
+                using (ModelsCMS db = new ModelsCMS())
                 {
                     db.organizers.Add(organizerModel);
                     db.SaveChanges();
@@ -114,6 +114,11 @@ namespace MVC_APTA_CMS_DEMO.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult AddOrEdit(int id=0)
+        {
+            return View();
         }
     }
 }

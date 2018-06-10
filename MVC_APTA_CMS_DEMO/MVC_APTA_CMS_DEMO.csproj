@@ -227,13 +227,16 @@
     <Content Include="Views\Attendee\Create.cshtml" />
     <Content Include="Views\Conference\Index.cshtml" />
     <Content Include="Views\Conference\Create.cshtml" />
-    <Content Include="Views\Organizer\Index.cshtml" />
-    <Content Include="Views\Organizer\Create.cshtml" />
+    <Content Include="Views\Organizer2\Index.cshtml" />
+    <Content Include="Views\Organizer2\Create.cshtml" />
     <Content Include="Views\TeamsPaper\Index.cshtml" />
     <Content Include="Views\TeamsPaper\Create.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\conferencename.cshtml" />
     <Content Include="Views\Home\login.cshtml" />
+    <Content Include="Views\Organizer2\AddOrEdit.cshtml" />
+    <Content Include="Views\Organizer\Index.cshtml" />
+    <Content Include="Views\Organizer\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,15 +14,17 @@
   </EntityType>
   <EntityType Name="conference_event">
     <Key>
-      <PropertyRef Name="Name" />
+      <PropertyRef Name="conferenceID" />
     </Key>
-    <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="45" />
     <Property Name="StartDate" Type="date" />
     <Property Name="EndDate" Type="date" />
     <Property Name="Chairman" Type="varchar" MaxLength="45" />
     <Property Name="Locations" Type="varchar" MaxLength="45" />
     <Property Name="short_description" Type="varchar" MaxLength="45" />
     <Property Name="last_reg_date" Type="date" />
+    <Property Name="conferenceID" Type="int" Nullable="false" />
+    <Property Name="admin_id" Type="int" />
   </EntityType>
   <EntityType Name="member">
     <Key>
@@ -50,7 +52,7 @@
     <Property Name="Description" Type="text" />
     <Property Name="Password" Type="varchar" MaxLength="45" />
     <Property Name="approve" Type="int" />
-    <Property Name="conferenceName" Type="varchar" MaxLength="45" />
+    <Property Name="conferenceId" Type="int" />
     <Property Name="reg_date" Type="timestamp" Precision="0" />
   </EntityType>
   <EntityType Name="teams_paper">
@@ -65,11 +67,39 @@
     <Property Name="PaperInbrief" Type="varchar" MaxLength="45" />
     <Property Name="PaperDomains" Type="varchar" MaxLength="45" />
     <Property Name="approve" Type="int" />
-    <Property Name="ConferenceName" Type="varchar" MaxLength="45" />
-    <Property Name="reg_date" Type="timestamp" Precision="0" />
+    <Property Name="ConferenceId" Type="int" />
+    <Property Name="reg_date" Type="date" />
   </EntityType>
+  <Association Name="a">
+    <End Role="apta_admin" Type="Self.apta_admin" Multiplicity="0..1" />
+    <End Role="conference_event" Type="Self.conference_event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="apta_admin">
+        <PropertyRef Name="adminID" />
+      </Principal>
+      <Dependent Role="conference_event">
+        <PropertyRef Name="admin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="d">
+    <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="organizer" Type="Self.organizer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="conference_event">
+        <PropertyRef Name="conferenceID" />
+      </Principal>
+      <Dependent Role="organizer">
+        <PropertyRef Name="conferenceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="teampk">
-    <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="1" />
+    <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="member" Type="Self.member" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="teams_paper">
@@ -80,27 +110,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="tesingfk">
-    <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1" />
-    <End Role="organizer" Type="Self.organizer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="conference_event">
-        <PropertyRef Name="Name" />
-      </Principal>
-      <Dependent Role="organizer">
-        <PropertyRef Name="conferenceName" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="testingagi">
-    <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1" />
+  <Association Name="vb">
+    <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="conference_event">
-        <PropertyRef Name="Name" />
+        <PropertyRef Name="conferenceID" />
       </Principal>
       <Dependent Role="teams_paper">
-        <PropertyRef Name="ConferenceName" />
+        <PropertyRef Name="ConferenceId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -110,15 +130,19 @@
     <EntitySet Name="member" EntityType="Self.member" Schema="dbcms" store:Type="Tables" />
     <EntitySet Name="organizer" EntityType="Self.organizer" Schema="dbcms" store:Type="Tables" />
     <EntitySet Name="teams_paper" EntityType="Self.teams_paper" Schema="dbcms" store:Type="Tables" />
+    <AssociationSet Name="a" Association="Self.a">
+      <End Role="apta_admin" EntitySet="apta_admin" />
+      <End Role="conference_event" EntitySet="conference_event" />
+    </AssociationSet>
+    <AssociationSet Name="d" Association="Self.d">
+      <End Role="conference_event" EntitySet="conference_event" />
+      <End Role="organizer" EntitySet="organizer" />
+    </AssociationSet>
     <AssociationSet Name="teampk" Association="Self.teampk">
       <End Role="teams_paper" EntitySet="teams_paper" />
       <End Role="member" EntitySet="member" />
     </AssociationSet>
-    <AssociationSet Name="tesingfk" Association="Self.tesingfk">
-      <End Role="conference_event" EntitySet="conference_event" />
-      <End Role="organizer" EntitySet="organizer" />
-    </AssociationSet>
-    <AssociationSet Name="testingagi" Association="Self.testingagi">
+    <AssociationSet Name="vb" Association="Self.vb">
       <End Role="conference_event" EntitySet="conference_event" />
       <End Role="teams_paper" EntitySet="teams_paper" />
     </AssociationSet>

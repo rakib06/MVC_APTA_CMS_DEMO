@@ -12,11 +12,10 @@
     <title>Index</title>
 </head>
 <body>
-@{Html.RenderAction("testNav", "Home");}
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-    <table class="table table-bordered">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -45,47 +44,52 @@
             <th>
                 @Html.DisplayNameFor(model => model.conferenceName)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reg_date)
+            </th>
             <th></th>
         </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Website)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.approve)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.conferenceName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.OrganizerId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.OrganizerId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OrganizerId })
-                </td>
-            </tr>
-        }
-
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.approve)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.conferenceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reg_date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.OrganizerId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.OrganizerId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.OrganizerId })
+            </td>
+        </tr>
+    }
+    
     </table>
 </body>
 </html>

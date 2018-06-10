@@ -7,9 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel;
-using System.Web.Services.Description;
-
 namespace MVC_APTA_CMS_DEMO.Models
 {
     using System;
@@ -23,7 +20,6 @@ namespace MVC_APTA_CMS_DEMO.Models
         }
     
         public int DelegatesID { get; set; }
-        [DisplayName("Enter Your Team name ")]
         public string TeamName { get; set; }
         public string OrganizationType { get; set; }
         public string PaperName { get; set; }
@@ -31,7 +27,7 @@ namespace MVC_APTA_CMS_DEMO.Models
         public string PaperInbrief { get; set; }
         public string PaperDomains { get; set; }
         public Nullable<int> approve { get; set; }
-        public string ConferenceName { get; set; }
+        public Nullable<int> ConferenceId { get; set; }
         public Nullable<System.DateTime> reg_date { get; set; }
     
         public virtual conference_event conference_event { get; set; }

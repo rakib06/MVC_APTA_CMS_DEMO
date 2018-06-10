@@ -14,7 +14,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Index()
         {
             List<conference_event> conference_eventlist = new List<conference_event>();
-            using (LAPTASModels db = new LAPTASModels())
+            using (ModelsCMS db = new ModelsCMS())
             {
                 conference_eventlist = db.conference_events.ToList<conference_event>();
             }
@@ -46,7 +46,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
             try
             {
-                using (LAPTASModels db = new LAPTASModels())
+                using (ModelsCMS db = new ModelsCMS())
                 {
                     db.conference_events.Add(conferenceModel);
                     db.SaveChanges();

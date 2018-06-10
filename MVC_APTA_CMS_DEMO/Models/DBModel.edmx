@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbcmsModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="dbcmsModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="apta_admin">
           <Key>
             <PropertyRef Name="adminID" />
@@ -19,15 +19,17 @@
         </EntityType>
         <EntityType Name="conference_event">
           <Key>
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="conferenceID" />
           </Key>
-          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
           <Property Name="StartDate" Type="date" />
           <Property Name="EndDate" Type="date" />
           <Property Name="Chairman" Type="varchar" MaxLength="45" />
           <Property Name="Locations" Type="varchar" MaxLength="45" />
           <Property Name="short_description" Type="varchar" MaxLength="45" />
           <Property Name="last_reg_date" Type="date" />
+          <Property Name="conferenceID" Type="int" Nullable="false" />
+          <Property Name="admin_id" Type="int" />
         </EntityType>
         <EntityType Name="member">
           <Key>
@@ -55,7 +57,7 @@
           <Property Name="Description" Type="text" />
           <Property Name="Password" Type="varchar" MaxLength="45" />
           <Property Name="approve" Type="int" />
-          <Property Name="conferenceName" Type="varchar" MaxLength="45" />
+          <Property Name="conferenceId" Type="int" />
           <Property Name="reg_date" Type="timestamp" Precision="0" />
         </EntityType>
         <EntityType Name="teams_paper">
@@ -70,11 +72,39 @@
           <Property Name="PaperInbrief" Type="varchar" MaxLength="45" />
           <Property Name="PaperDomains" Type="varchar" MaxLength="45" />
           <Property Name="approve" Type="int" />
-          <Property Name="ConferenceName" Type="varchar" MaxLength="45" />
-          <Property Name="reg_date" Type="timestamp" Precision="0" />
+          <Property Name="ConferenceId" Type="int" />
+          <Property Name="reg_date" Type="date" />
         </EntityType>
+        <Association Name="a">
+          <End Role="apta_admin" Type="Self.apta_admin" Multiplicity="0..1" />
+          <End Role="conference_event" Type="Self.conference_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="apta_admin">
+              <PropertyRef Name="adminID" />
+            </Principal>
+            <Dependent Role="conference_event">
+              <PropertyRef Name="admin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="d">
+          <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="organizer" Type="Self.organizer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="conference_event">
+              <PropertyRef Name="conferenceID" />
+            </Principal>
+            <Dependent Role="organizer">
+              <PropertyRef Name="conferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="teampk">
-          <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="1" />
+          <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="member" Type="Self.member" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="teams_paper">
@@ -85,27 +115,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="tesingfk">
-          <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1" />
-          <End Role="organizer" Type="Self.organizer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="conference_event">
-              <PropertyRef Name="Name" />
-            </Principal>
-            <Dependent Role="organizer">
-              <PropertyRef Name="conferenceName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="testingagi">
-          <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1" />
+        <Association Name="vb">
+          <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="conference_event">
-              <PropertyRef Name="Name" />
+              <PropertyRef Name="conferenceID" />
             </Principal>
             <Dependent Role="teams_paper">
-              <PropertyRef Name="ConferenceName" />
+              <PropertyRef Name="ConferenceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -115,21 +135,24 @@
           <EntitySet Name="member" EntityType="Self.member" Schema="dbcms" store:Type="Tables" />
           <EntitySet Name="organizer" EntityType="Self.organizer" Schema="dbcms" store:Type="Tables" />
           <EntitySet Name="teams_paper" EntityType="Self.teams_paper" Schema="dbcms" store:Type="Tables" />
+          <AssociationSet Name="a" Association="Self.a">
+            <End Role="apta_admin" EntitySet="apta_admin" />
+            <End Role="conference_event" EntitySet="conference_event" />
+          </AssociationSet>
+          <AssociationSet Name="d" Association="Self.d">
+            <End Role="conference_event" EntitySet="conference_event" />
+            <End Role="organizer" EntitySet="organizer" />
+          </AssociationSet>
           <AssociationSet Name="teampk" Association="Self.teampk">
             <End Role="teams_paper" EntitySet="teams_paper" />
             <End Role="member" EntitySet="member" />
           </AssociationSet>
-          <AssociationSet Name="tesingfk" Association="Self.tesingfk">
-            <End Role="conference_event" EntitySet="conference_event" />
-            <End Role="organizer" EntitySet="organizer" />
-          </AssociationSet>
-          <AssociationSet Name="testingagi" Association="Self.testingagi">
+          <AssociationSet Name="vb" Association="Self.vb">
             <End Role="conference_event" EntitySet="conference_event" />
             <End Role="teams_paper" EntitySet="teams_paper" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbcmsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -144,20 +167,24 @@
           <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="conference_event" Relationship="Self.a" FromRole="apta_admin" ToRole="conference_event" />
         </EntityType>
         <EntityType Name="conference_event">
           <Key>
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="conferenceID" />
           </Key>
-          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="StartDate" Type="DateTime" />
           <Property Name="EndDate" Type="DateTime" />
           <Property Name="Chairman" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Locations" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="short_description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="last_reg_date" Type="DateTime" />
-          <NavigationProperty Name="organizers" Relationship="Self.tesingfk" FromRole="conference_event" ToRole="organizer" />
-          <NavigationProperty Name="teams_paper" Relationship="Self.testingagi" FromRole="conference_event" ToRole="teams_paper" />
+          <Property Name="conferenceID" Type="Int32" Nullable="false" />
+          <Property Name="admin_id" Type="Int32" />
+          <NavigationProperty Name="apta_admin" Relationship="Self.a" FromRole="conference_event" ToRole="apta_admin" />
+          <NavigationProperty Name="teams_paper" Relationship="Self.vb" FromRole="conference_event" ToRole="teams_paper" />
+          <NavigationProperty Name="organizers" Relationship="dbcmsModel.d" FromRole="conference_event" ToRole="organizer" />
         </EntityType>
         <EntityType Name="member">
           <Key>
@@ -186,9 +213,9 @@
           <Property Name="Description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="approve" Type="Int32" />
-          <Property Name="conferenceName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="conferenceId" Type="Int32" />
           <Property Name="reg_date" Type="DateTime" />
-          <NavigationProperty Name="conference_event" Relationship="Self.tesingfk" FromRole="organizer" ToRole="conference_event" />
+          <NavigationProperty Name="conference_event" Relationship="dbcmsModel.d" FromRole="organizer" ToRole="conference_event" />
         </EntityType>
         <EntityType Name="teams_paper">
           <Key>
@@ -202,37 +229,41 @@
           <Property Name="PaperInbrief" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="PaperDomains" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="approve" Type="Int32" />
-          <Property Name="ConferenceName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ConferenceId" Type="Int32" />
           <Property Name="reg_date" Type="DateTime" />
-          <NavigationProperty Name="conference_event" Relationship="Self.testingagi" FromRole="teams_paper" ToRole="conference_event" />
+          <NavigationProperty Name="conference_event" Relationship="Self.vb" FromRole="teams_paper" ToRole="conference_event" />
           <NavigationProperty Name="members" Relationship="Self.teampk" FromRole="teams_paper" ToRole="member" />
         </EntityType>
-        <Association Name="tesingfk">
-          <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1" />
-          <End Role="organizer" Type="Self.organizer" Multiplicity="*" />
+        <Association Name="a">
+          <End Role="apta_admin" Type="Self.apta_admin" Multiplicity="0..1" />
+          <End Role="conference_event" Type="Self.conference_event" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="conference_event">
-              <PropertyRef Name="Name" />
+            <Principal Role="apta_admin">
+              <PropertyRef Name="adminID" />
             </Principal>
-            <Dependent Role="organizer">
-              <PropertyRef Name="conferenceName" />
+            <Dependent Role="conference_event">
+              <PropertyRef Name="admin_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="testingagi">
-          <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1" />
+        <Association Name="vb">
+          <End Role="conference_event" Type="Self.conference_event" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="conference_event">
-              <PropertyRef Name="Name" />
+              <PropertyRef Name="conferenceID" />
             </Principal>
             <Dependent Role="teams_paper">
-              <PropertyRef Name="ConferenceName" />
+              <PropertyRef Name="ConferenceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="teampk">
-          <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="1" />
+          <End Role="teams_paper" Type="Self.teams_paper" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="member" Type="Self.member" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="teams_paper">
@@ -243,17 +274,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LAPTASModels" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ModelsCMS" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="apta_admin" EntityType="Self.apta_admin" />
           <EntitySet Name="conference_event" EntityType="Self.conference_event" />
           <EntitySet Name="members" EntityType="Self.member" />
           <EntitySet Name="organizers" EntityType="Self.organizer" />
           <EntitySet Name="teams_paper" EntityType="Self.teams_paper" />
-          <AssociationSet Name="tesingfk" Association="Self.tesingfk">
+          <AssociationSet Name="a" Association="Self.a">
+            <End Role="apta_admin" EntitySet="apta_admin" />
             <End Role="conference_event" EntitySet="conference_event" />
-            <End Role="organizer" EntitySet="organizers" />
           </AssociationSet>
-          <AssociationSet Name="testingagi" Association="Self.testingagi">
+          <AssociationSet Name="vb" Association="Self.vb">
             <End Role="conference_event" EntitySet="conference_event" />
             <End Role="teams_paper" EntitySet="teams_paper" />
           </AssociationSet>
@@ -261,13 +292,31 @@
             <End Role="teams_paper" EntitySet="teams_paper" />
             <End Role="member" EntitySet="members" />
           </AssociationSet>
+          <AssociationSet Name="d" Association="dbcmsModel.d">
+            <End Role="conference_event" EntitySet="conference_event" />
+            <End Role="organizer" EntitySet="organizers" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="d">
+          <End Type="dbcmsModel.conference_event" Role="conference_event" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="dbcmsModel.organizer" Role="organizer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="conference_event">
+              <PropertyRef Name="conferenceID" />
+            </Principal>
+            <Dependent Role="organizer">
+              <PropertyRef Name="conferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbcmsModelStoreContainer" CdmEntityContainer="LAPTASModels">
+        <EntityContainerMapping StorageEntityContainer="dbcmsModelStoreContainer" CdmEntityContainer="ModelsCMS">
           <EntitySetMapping Name="apta_admin">
             <EntityTypeMapping TypeName="dbcmsModel.apta_admin">
               <MappingFragment StoreEntitySet="apta_admin">
@@ -291,6 +340,8 @@
                 <ScalarProperty Name="Locations" ColumnName="Locations" />
                 <ScalarProperty Name="short_description" ColumnName="short_description" />
                 <ScalarProperty Name="last_reg_date" ColumnName="last_reg_date" />
+                <ScalarProperty Name="conferenceID" ColumnName="conferenceID" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -320,7 +371,7 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="approve" ColumnName="approve" />
-                <ScalarProperty Name="conferenceName" ColumnName="conferenceName" />
+                <ScalarProperty Name="conferenceId" ColumnName="conferenceId" />
                 <ScalarProperty Name="reg_date" ColumnName="reg_date" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -336,7 +387,7 @@
                 <ScalarProperty Name="PaperInbrief" ColumnName="PaperInbrief" />
                 <ScalarProperty Name="PaperDomains" ColumnName="PaperDomains" />
                 <ScalarProperty Name="approve" ColumnName="approve" />
-                <ScalarProperty Name="ConferenceName" ColumnName="ConferenceName" />
+                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
                 <ScalarProperty Name="reg_date" ColumnName="reg_date" />
               </MappingFragment>
             </EntityTypeMapping>

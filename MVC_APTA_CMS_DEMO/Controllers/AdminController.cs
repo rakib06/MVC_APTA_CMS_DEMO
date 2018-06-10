@@ -16,7 +16,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         {
             List<apta_admin> adminlist = new List<apta_admin>();
 
-            using (LAPTASModels db = new LAPTASModels())
+            using (ModelsCMS db = new ModelsCMS())
             {
                 adminlist = db.apta_admins.ToList<apta_admin>();
             }
@@ -49,7 +49,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         {
             try
             {
-                using (LAPTASModels db = new LAPTASModels())
+                using (ModelsCMS db = new ModelsCMS())
                 {
                     db.apta_admins.Add(adminmodel);
                     db.SaveChanges();

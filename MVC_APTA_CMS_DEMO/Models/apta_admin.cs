@@ -14,6 +14,11 @@ namespace MVC_APTA_CMS_DEMO.Models
     
     public partial class apta_admin
     {
+        public apta_admin()
+        {
+            this.conference_event = new HashSet<conference_event>();
+        }
+    
         public int adminID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -21,13 +26,7 @@ namespace MVC_APTA_CMS_DEMO.Models
         public string Email { get; set; }
         public string Address { get; set; }
         public string Password { get; set; }
-
-
-
-       
+    
+        public virtual ICollection<conference_event> conference_event { get; set; }
     }
-   
-
-
-
 }

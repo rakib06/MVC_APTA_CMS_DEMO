@@ -14,7 +14,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Index()
         {
             List<teams_paper> teams_paperlist = new List<teams_paper>();
-            using (LAPTASModels db = new LAPTASModels())
+            using (ModelsCMS db = new ModelsCMS())
             {
                 teams_paperlist = db.teams_papers.ToList<teams_paper>();
             }
@@ -45,7 +45,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         {
             try
             {
-                using (LAPTASModels db = new LAPTASModels())
+                using (ModelsCMS db = new ModelsCMS())
                 {
                     db.teams_papers.Add(teamsPaperModel);
                     db.SaveChanges();

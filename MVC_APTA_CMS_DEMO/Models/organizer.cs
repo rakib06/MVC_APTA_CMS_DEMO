@@ -7,9 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC_APTA_CMS_DEMO.Models
 {
@@ -19,24 +17,19 @@ namespace MVC_APTA_CMS_DEMO.Models
     public partial class organizer
     {
         public int OrganizerId { get; set; }
-        [Required]
         public string Name { get; set; }
-        [Required]
         public string Location { get; set; }
-        [Required]
         public string Email { get; set; }
         public string Website { get; set; }
         public string Phone { get; set; }
         public string Description { get; set; }
-        [Required]
         public string Password { get; set; }
         public Nullable<int> approve { get; set; }
-        [Required]
-        [DisplayName("Select Conference ")]
-        public string conferenceName { get; set; }
-        public IEnumerable<SelectListItem> conference_event_Name { get; set; }
+        public Nullable<int> conferenceId { get; set; }
         public Nullable<System.DateTime> reg_date { get; set; }
     
         public virtual conference_event conference_event { get; set; }
+        [NotMapped]
+        public List<conference_event> ConferenceCollection { get; set; }
     }
 }

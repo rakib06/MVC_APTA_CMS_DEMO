@@ -14,7 +14,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Index()
         {
             List<member> memberlist = new List<member>();
-            using (LAPTASModels db = new LAPTASModels())
+            using (ModelsCMS db = new ModelsCMS())
             {
                 memberlist = db.members.ToList<member>();
             }
@@ -45,7 +45,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         {
             try
             {
-                using (LAPTASModels db = new LAPTASModels())
+                using (ModelsCMS db = new ModelsCMS())
                 {
                     db.members.Add(membernmodel);
                     db.SaveChanges();
