@@ -1,5 +1,6 @@
 ﻿@model MVC_APTA_CMS_DEMO.Models.organizer
 
+
 @{
     Layout = null;
 }
@@ -82,11 +83,14 @@
         </div>
 
 
-        <div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.conferenceId)
+        </div>
+        <div class="editor-field">
            
-               @Html.DisplayNameFor(model => model.conferenceId)
-               @Html.DropDownListFor(model => model.conferenceId, new SelectList(Model.ConferenceCollection, "conferenceId", "Name"), "Select")
-            
+
+            @Html.DropDownListFor(model => model.conferenceId, new SelectList(Model.ConferenceCollection, "conferenceId", "Name"), "Select")
+
         </div>
 
         <div class="form-group">
@@ -96,6 +100,7 @@
                 @Html.ValidationMessageFor(model => model.reg_date, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <p>
             <input type="submit" value="Create"/>
         </p>

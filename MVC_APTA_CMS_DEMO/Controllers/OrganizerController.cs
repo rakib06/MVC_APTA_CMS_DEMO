@@ -118,7 +118,50 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
         public ActionResult AddOrEdit(int id=0)
         {
-            return View();
+            organizer organizerModel = new organizer();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+               if (id != 0)
+                   organizerModel = db.organizers.Where(x => x.OrganizerId == id).FirstOrDefault();
+               organizerModel.ConferenceCollection = db.conference_events.ToList<conference_event>();
+
+            }
+
+         /*   // hardcore 
+            organizerModel.ConferenceCollection = new List<conference_event>()
+            {
+                new conference_event() {conferenceID = 1, Name = "Computer"},
+
+                new conference_event() {conferenceID = 1, Name = "Computer"},
+            };
+            */
+        
+            return View(organizerModel);
         }
+
+        [HttpPost]
+        public ActionResult AddOrEdit(organizer org)
+        {
+
+
+
+
+            try
+            {
+                using (ModelsCMS db = new ModelsCMS())
+                {
+                    db.organizers.Add(org);
+                    db.SaveChanges();
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View("Error");
+            }
+            
+        }
+
     }
 }

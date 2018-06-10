@@ -189,6 +189,7 @@
     <Content Include="Content\logo\favicon-32x32.png" />
     <Content Include="Content\logo\logo23.png" />
     <Content Include="Content\logo\profile.jpg" />
+    <Content Include="favicon-32x32.png" />
     <Content Include="Global.asax" />
     <EntityDeploy Include="Models\DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -237,6 +238,7 @@
     <Content Include="Views\Organizer2\AddOrEdit.cshtml" />
     <Content Include="Views\Organizer\Index.cshtml" />
     <Content Include="Views\Organizer\Create.cshtml" />
+    <Content Include="Views\Organizer\AddOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
