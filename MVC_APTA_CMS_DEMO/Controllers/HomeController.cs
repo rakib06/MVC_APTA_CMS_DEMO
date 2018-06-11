@@ -14,7 +14,12 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Index()
         {
            
-            return View();
+            return View("Index");
+        }
+        public ActionResult adminLogin()
+        {
+
+            return View("adminLogin");
         }
         //partial view
         public ActionResult testNav()
@@ -98,11 +103,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
 
 
-        public ActionResult adminLogin()
-        {
-
-            return View();
-        }
+        
         [HttpPost]
         public ActionResult adminLogin(apta_admin admin)
         {

@@ -20,6 +20,15 @@ namespace MVC_APTA_CMS_DEMO.Controllers
             }
             return View(conference_eventlist);
         }
+        public ActionResult IndexPublic()
+        {
+            List<conference_event> conference_eventlist = new List<conference_event>();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                conference_eventlist = db.conference_events.ToList<conference_event>();
+            }
+            return View(conference_eventlist);
+        }
 
         //
         // GET: /Conference/Details/5

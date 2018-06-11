@@ -7,22 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace MVC_APTA_CMS_DEMO.Models
 {
     using System;
     using System.Collections.Generic;
-
-    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class member
     {
         public int AttendeeID { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public string Phone { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Country { get; set; }
+        [Required]
         public string Address { get; set; }
+        [Required]
         public int DelegatesID { get; set; }
     
         public virtual teams_paper teams_paper { get; set; }

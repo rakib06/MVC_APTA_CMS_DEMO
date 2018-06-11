@@ -257,6 +257,9 @@
     <Content Include="Views\TeamsPaper\Create.cshtml" />
     <Content Include="Views\Attendee\Create.cshtml" />
     <Content Include="Views\Shared\Required.cshtml" />
+    <Content Include="Views\Conference\IndexPublic.cshtml" />
+    <Content Include="Views\Attendee\IndexPublic.cshtml" />
+    <Content Include="Views\TeamsPaper\IndexPublic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

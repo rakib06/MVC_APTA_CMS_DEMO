@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace MVC_APTA_CMS_DEMO.Models
 {
     using System;
@@ -20,11 +22,17 @@ namespace MVC_APTA_CMS_DEMO.Models
         }
     
         public int adminID { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public string Phone { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Address { get; set; }
+        [Required]
         public string Password { get; set; }
     
         public virtual ICollection<conference_event> conference_event { get; set; }

@@ -5,10 +5,8 @@
 }
 
 
-@{Html.RenderAction("adminNav", "Home");}
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@{Html.RenderAction("testNav", "Home");}
+
 
 <table class="table table-bordered">
     <tr>
@@ -24,7 +22,7 @@
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
-       
+
         <th>
             @Html.DisplayNameFor(model => model.Chairman)
         </th>
@@ -52,7 +50,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EndDate)
             </td>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => item.Chairman)
             </td>
@@ -63,9 +61,8 @@
                 @Html.DisplayFor(modelItem => item.short_description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) |
-                @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
-                @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
+               
+                @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) 
             </td>
         </tr>
     }

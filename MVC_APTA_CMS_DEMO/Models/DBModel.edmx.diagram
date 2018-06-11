@@ -7,8 +7,8 @@
       <Diagram DiagramId="12d62226d9004ac49767a634cfa044a4" Name="Diagram1">
         <EntityTypeShape EntityType="dbcmsModel.apta_admin" Width="1.5" PointX="0.5" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="dbcmsModel.conference_event" Width="1.5" PointX="3" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbcmsModel.member" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbcmsModel.organizer" Width="1.5" PointX="5.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbcmsModel.member" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbcmsModel.organizer" Width="1.5" PointX="7.625" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="dbcmsModel.teams_paper" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="dbcmsModel.a" ManuallyRouted="false" />
         <AssociationConnector Association="dbcmsModel.vb" ManuallyRouted="false" />

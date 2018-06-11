@@ -20,7 +20,15 @@ namespace MVC_APTA_CMS_DEMO.Controllers
             }
             return View(teams_paperlist);
         }
-
+        public ActionResult IndexPublic()
+        {
+            List<teams_paper> teams_paperlist = new List<teams_paper>();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                teams_paperlist = db.teams_papers.ToList<teams_paper>();
+            }
+            return View(teams_paperlist);
+        }
         //
         // GET: /TeamsPaper/Details/5
 

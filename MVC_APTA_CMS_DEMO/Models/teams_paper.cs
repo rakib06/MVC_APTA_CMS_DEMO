@@ -7,18 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Objects;
-using System.Web.UI.WebControls;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC_APTA_CMS_DEMO.Models
 {
     using System;
     using System.Collections.Generic;
-
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class teams_paper
     {
         public teams_paper()
@@ -27,29 +23,20 @@ namespace MVC_APTA_CMS_DEMO.Models
         }
     
         public int DelegatesID { get; set; }
-        [Required] [DisplayName("Your Team name")]
+        [Required]
         public string TeamName { get; set; }
         [Required]
         public string OrganizationType { get; set; }
-        [Required]
         public string PaperName { get; set; }
-        [Required]
-        [DisplayName("Your Online paper Link  i.e Google Drive Link")]
-        
         public string PaperLink { get; set; }
-        [Required] [DisplayName("Short description about your Paper")]
         public string PaperInbrief { get; set; }
-        [Required]
-        [DisplayName("Topics / domains related to your paper")]
         public string PaperDomains { get; set; }
         public Nullable<int> approve { get; set; }
         public Nullable<int> ConferenceId { get; set; }
-        [Required]
         public Nullable<System.DateTime> reg_date { get; set; }
     
         public virtual conference_event conference_event { get; set; }
         public virtual ICollection<member> members { get; set; }
-       
         [NotMapped]
         public List<conference_event> ConferenceCollection { get; set; }
     }
