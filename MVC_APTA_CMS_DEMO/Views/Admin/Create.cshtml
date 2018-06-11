@@ -4,82 +4,142 @@
     Layout = null;
 }
 
-
-@{Html.RenderAction("testNav", "Home");}
-<script src="~/Scripts/jquery-1.8.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@{Html.RenderAction("adminNav", "Home");}
+<div class="well well-lg">
+    <legend>Add Admin to Apta </legend>
+</div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>apta_admin</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.adminID)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.adminID)
-            @Html.ValidationMessageFor(model => model.adminID)
+    <table class="table table-dark">
+        <div class="form-group">
+
+
+
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.FirstName)
+                    </div>
+
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.FirstName)
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.LastName)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.LastName)
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Phone)
+                    </div>
+                </td>
+
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Phone)
+                        @Html.ValidationMessageFor(model => model.Phone)
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Email)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Email)
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Password)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Address)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Address)
+                        @Html.ValidationMessageFor(model => model.Address)
+                    </div>
+                </td>
+            </tr>
+
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FirstName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FirstName)
-            @Html.ValidationMessageFor(model => model.FirstName)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.LastName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.LastName)
-            @Html.ValidationMessageFor(model => model.LastName)
-        </div>
+    </table>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Phone)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Phone)
-            @Html.ValidationMessageFor(model => model.Phone)
-        </div>
+    <p>
+        <button type="submit" value="Create" class="btn btn-primary btn-lg btn-block"> Add   </button>
+    </p>
+    
+   
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Address)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Address)
-            @Html.ValidationMessageFor(model => model.Address)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
-
-        <p>
-            <input type="submit" value="Create"/>
-        </p>
-    </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+<p>
+    <a href="@Url.Action("Create","Conference")" class="btn btn-default btn-lg btn-block" role="button">Create A new Conference </a>
+
+</p>
+<p>
+    <a href="@Url.Action("Create","Admin")" class=" btn btn-default btn-lg btn-block" role="button">Create A new APTA ADMIN </a>
+
+</p>
+<p>
+    <a href="@Url.Action("Index","Organizer")" class="btn btn-default btn-lg btn-block" role="button">Manage or approve Organization </a>
+
+</p>   
+<p>
+    <a href="@Url.Action("Index","Attendee")" class="btn btn-default btn-lg btn-block" role="button">Manage Attendee </a>
+
+</p> 
+
+
+
+
+
+

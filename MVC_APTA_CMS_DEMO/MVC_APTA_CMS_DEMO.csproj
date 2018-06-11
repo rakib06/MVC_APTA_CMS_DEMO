@@ -190,7 +190,6 @@
     <Content Include="Content\logo\favicon.ico" />
     <Content Include="Content\logo\logo23.png" />
     <Content Include="Content\logo\profile.jpg" />
-    <Content Include="favicon-32x32.png" />
     <EmbeddedResource Include="favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -231,12 +230,9 @@
     <Content Include="Views\Attendee\Index.cshtml" />
     <Content Include="Views\Conference\Index.cshtml" />
     <Content Include="Views\Conference\Create.cshtml" />
-    <Content Include="Views\Organizer2\Index.cshtml" />
-    <Content Include="Views\Organizer2\Create.cshtml" />
     <Content Include="Views\TeamsPaper\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\conferencename.cshtml" />
-    <Content Include="Views\Organizer2\AddOrEdit.cshtml" />
     <Content Include="Views\Organizer\Index.cshtml" />
     <Content Include="Views\Organizer\Create.cshtml" />
     <Content Include="Views\Organizer\AddOrEdit.cshtml" />
@@ -260,6 +256,7 @@
     <Content Include="Views\Conference\IndexPublic.cshtml" />
     <Content Include="Views\Attendee\IndexPublic.cshtml" />
     <Content Include="Views\TeamsPaper\IndexPublic.cshtml" />
+    <Content Include="Views\Conference\ConferenceOrg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

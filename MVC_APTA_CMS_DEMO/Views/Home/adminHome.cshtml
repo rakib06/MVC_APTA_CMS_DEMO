@@ -24,19 +24,19 @@
       
         @{Html.RenderAction("adminNav", "Home");}
         <p>
-            <a href="@Url.Action("conferencecreate","Home")" class="btn btn-default btn-lg btn-block" role="button">Create A new Conference </a>
+            <a href="@Url.Action("Create","Conference")" class="btn btn-default btn-lg btn-block" role="button">Create A new Conference </a>
 
         </p>
         <p>
-            <a href="@Url.Action("conferencecreate","Home")" class=" btn btn-default btn-lg btn-block" role="button">Create A new APTA ADMIN </a>
+            <a href="@Url.Action("Create","Admin")" class=" btn btn-default btn-lg btn-block" role="button">Create A new APTA ADMIN </a>
 
         </p>
         <p>
-            <a href="@Url.Action("conferencecreate","Home")" class="btn btn-default btn-lg btn-block" role="button">Manage Organization </a>
+            <a href="@Url.Action("Index","Organizer")" class="btn btn-default btn-lg btn-block" role="button">Manage or approve Organization </a>
 
         </p>   
         <p>
-            <a href="@Url.Action("conferencecreate","Home")" class="btn btn-default btn-lg btn-block" role="button">Manage Attendee </a>
+            <a href="@Url.Action("Index","Attendee")" class="btn btn-default btn-lg btn-block" role="button">Manage Attendee </a>
 
         </p>  
     </p>

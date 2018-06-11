@@ -4,9 +4,16 @@
     Layout = null;
 }
 
+@if (ViewBag.Email != null)
+{
+Html.RenderAction("orgtNav", "Home");
+    
+}
+else
+{
+    Html.RenderAction("testNav", "Home");
 
-@{Html.RenderAction("testNav", "Home");}
-
+}
 <table class="table table-bordered">
     <tr>
         <th>

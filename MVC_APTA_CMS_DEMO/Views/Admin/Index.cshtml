@@ -4,18 +4,9 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
 @{Html.RenderAction("adminNav","Home");}
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
     <table class="table table-bordered">
         <tr>
             <th>
@@ -75,5 +66,7 @@
         }
 
     </table>
-</body>
-</html>
+<p>
+    <a href="@Url.Action("Create","Admin")" class="btn btn-default btn-lg btn-block" role="button">Create A new Conference </a>
+
+</p>
