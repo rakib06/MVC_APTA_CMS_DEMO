@@ -1,0 +1,35 @@
+﻿<br/>
+<br />
+<br />
+<br />
+
+@{
+    ViewBag.Title = "orgHome";
+}
+
+
+@if (ViewBag.Email != null  )
+{
+
+    <h2> Welcome  Organization : </h2>
+    
+    <h4>Your Email ,@ViewBag.Email</h4>
+
+
+
+
+
+    <p>
+
+        @{Html.RenderAction("Welcome", "Home");}
+    </p>
+}
+else
+{
+<p>
+   
+    @{Html.RenderAction("orgLogin", "Home");}
+</p>
+   
+   
+}

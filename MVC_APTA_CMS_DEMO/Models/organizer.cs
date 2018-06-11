@@ -16,6 +16,7 @@ namespace MVC_APTA_CMS_DEMO.Models
     
     public partial class organizer
     {
+        
         public int OrganizerId { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }

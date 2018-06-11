@@ -1,0 +1,73 @@
+﻿@model MVC_APTA_CMS_DEMO.Models.organizer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>orgLogin</title>
+</head>
+<body>
+@{Html.RenderAction("testNav","Home");}
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    if (ViewBag.message == null && ViewBag.triedOnce == "yes")
+    {
+        <h4>Email or password unvalid.@Html.ActionLink("Try again", "orgLogin") </h4>
+
+
+    }
+    <div class="form-group-horizontal">
+        
+    </div>
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>organizer Login</legend>
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+
+
+
+
+        <p>
+            <input type="submit" value="Login"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+</body>
+</html>
