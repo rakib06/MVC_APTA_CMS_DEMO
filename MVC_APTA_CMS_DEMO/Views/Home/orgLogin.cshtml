@@ -12,7 +12,9 @@
     <title>orgLogin</title>
 </head>
 <body>
-@{Html.RenderAction("testNav","Home");}
+
+
+@{Html.RenderAction("testNav", "Home");}
 
 <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
@@ -28,40 +30,51 @@
 
     }
     <div class="form-group-horizontal">
-        
+
     </div>
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>organizer Login</legend>
-
-
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
+        <div class="well well-lg">
+            <legend>APTA Admin login form </legend>
         </div>
 
 
+        <table class="table table-striped">
+            <div class="form-group">
+                <tr>
+                    <td>
+                        <label for="email">@Html.LabelFor(a => a.Email) </label>
+                    </td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
-        </div>
-        <div class="editor-field">
-            @Html.PasswordFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
+                    <td> <input type="email" class="form-control" @Html.TextBoxFor(a => a.Email)<br/> </td>
 
+                    <td>@Html.ValidationMessageFor(a => a.Email)</td>
+                </tr>
+            </div>
+            <div class="form-group">
+                <tr>
+                    <td>
+                        <label for="pwd"> Password: </label>
+                    </td>
+                    <td>
+                        <input type="password" class="form-control" @Html.PasswordFor(a => a.Password)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(a => a.Password)
+                    </td>
+                </tr>
+            </div>
+            <tr>
+                <td></td>
+                <td>
+                    <br/>
+                    <button type="submit" class="btn btn-default" value="Login">Login</button>
 
-
-
-
-        <p>
-            <input type="submit" value="Login"/>
-        </p>
+                </td>
+                <td></td>
+            </tr>
+        </table>
     </fieldset>
 }
 

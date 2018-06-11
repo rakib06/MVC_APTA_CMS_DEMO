@@ -245,6 +245,13 @@
     <Content Include="Views\Home\wait.cshtml" />
     <Content Include="Views\Home\orgLogin.cshtml" />
     <Content Include="Views\Shared\welcome.cshtml" />
+    <Content Include="Views\Home\contact.cshtml" />
+    <Content Include="Views\Home\adminHome.cshtml" />
+    <Content Include="Views\Home\adminLogin.cshtml" />
+    <Content Include="Views\Shared\contact_partial.cshtml" />
+    <Content Include="Views\Home\adcont.cshtml" />
+    <Content Include="Views\Home\orgcont.cshtml" />
+    <Content Include="Views\Admin\IndexPublic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,13 @@
 ﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta name="description" content="The description of my page" />
+</head>
+<body style="height:1500px">
+
+
 <link rel="shortcut icon" href="~/favicon-32x32.png" />
 <title>APTA Conference Management </title>
 
@@ -37,12 +46,18 @@
             <li><a href="@Url.Action("Index","Organizer")">Oraginer </a></li>
             <li><a href="@Url.Action("Index","Attendee")" >Attendee</a></li>
             <li><a href="@Url.Action("Index","TeamsPaper")">Team</a></li>
-            <li><a href="@Url.Action("Index","Admin")" >Admin</a></li>
+            <li><a href="@Url.Action("IndexPublic","Admin")" >Admin</a></li>
             
-            <li><a href="@Url.Action("orgRegister","Home")">Organizer Panel </a></li>
-            <li><a href="#">APTA Admin Panel</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login and Registration <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("adminLogin","Home")">Apta Admin Login</a></li>
+                    <li><a href="@Url.Action("orgLogin","Home")">Organization Login</a></li>
+                    <li><a href="@Url.Action("AddOrEdit","Organizer")">Organization Registration </a></li>
+                </ul>
+            </li>
 
-            <li class=""><a href="#">Contact </a></li>
+            <li class=""><a href="@Url.Action("contact","Home")">Contact </a></li>
         </ul>
     </div>
 </nav>
@@ -55,3 +70,5 @@
 <br />
 
 
+</body>
+</html>

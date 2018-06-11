@@ -154,7 +154,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
                     db.SaveChanges();
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("wait","Home");
             }
             catch
             {
@@ -162,6 +162,11 @@ namespace MVC_APTA_CMS_DEMO.Controllers
             }
             
         }
+        public ActionResult Error()
+        {
+            return PartialView("Error");
+        }
+       
 
     }
 }

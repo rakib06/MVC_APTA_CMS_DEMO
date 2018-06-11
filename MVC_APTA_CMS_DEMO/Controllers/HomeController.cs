@@ -21,6 +21,15 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         {
             return PartialView("testnav");
         }
+        public ActionResult orgcont()
+        {
+            return PartialView("orgcont");
+        }
+        public ActionResult adcont()
+        {
+            return PartialView("adcont");
+        }
+
         public ActionResult orgtNav()
         {
             return PartialView("orgNav");
@@ -34,29 +43,20 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         {
             return PartialView("welcome");
         }
+        public ActionResult wait()
+        {
+            return PartialView("wait");
+        }
         public ActionResult Error()
         {
             return PartialView("Error");
         }
-
+        public ActionResult contact_partial()
+        {
+            return PartialView("contact_partial");
+        }
        
-        public ActionResult orgRegister()
-        {
-            
-            return View();
-
-        }
-        [HttpPost]
-        public ActionResult orgRegister(organizer org)
-        {
-
-            ModelsCMS db = new ModelsCMS();
-            db.organizers.Add(org);
-            db.SaveChanges();
-            ViewBag.message = "You are Successfully Register";
-            return View("Wait");
-
-        }
+        
        
         public ActionResult orgLogin()
         {
@@ -88,6 +88,44 @@ namespace MVC_APTA_CMS_DEMO.Controllers
             ViewBag.Name = Name;
             return View();
         }
+        public ActionResult contact()
+        {
+            return View("contact");
+        }
+
+
+
+        public ActionResult adminLogin()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult adminLogin(apta_admin admin)
+        {
+            ModelsCMS db = new ModelsCMS();
+            var userLoggedIn = db.apta_admins.SingleOrDefault(x => x.Email == admin.Email && x.Password == admin.Password );
+            if (userLoggedIn != null)
+            {
+                ViewBag.message1 = "loggedin";
+                ViewBag.triedOne1 = "yes";
+                return RedirectToAction("adminHome", "Home", new { Email = admin.Email });
+            }
+            else
+            {
+                ViewBag.triedOnce = "yes";
+                return View("Error");
+            }
+
+        }
+
+        public ActionResult adminHome(string Email)
+        {
+            ViewBag.Email1 = Email;
+           
+            return View();
+        }
+        
 
     }
 }

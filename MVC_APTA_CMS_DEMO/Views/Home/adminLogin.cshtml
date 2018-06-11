@@ -1,0 +1,85 @@
+﻿@model MVC_APTA_CMS_DEMO.Models.apta_admin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+</head>
+<body>
+
+
+
+    @{Html.RenderAction("testNav", "Home");}
+
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        if (ViewBag.message1 == null && ViewBag.triedOnce1 == "yes")
+        {
+            <h4>Email or password unvalid.@Html.ActionLink("Try again", "adminLogin") </h4>
+
+
+        }
+        
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <div class="well well-lg">
+                <legend>APTA Admin login form </legend>
+            </div>
+
+
+            <table class="table table-striped">
+                <div class="form-group">
+                    <tr>
+                        <td>
+                            <label for="email">@Html.LabelFor(a => a.Email) </label>
+                        </td>
+
+                        <td> <input type="email" class="form-control" @Html.TextBoxFor(a => a.Email)<br /> </td>
+
+                        <td>@Html.ValidationMessageFor(a => a.Email)</td>
+                    </tr>
+                </div>
+                <div class="form-group">
+                    <tr>
+                        <td>
+                            <label for="pwd"> Password: </label>
+                        </td>
+                        <td>
+                            <input type="password" class="form-control" @Html.PasswordFor(a => a.Password)
+                        </td>
+                        <td>
+                            @Html.ValidationMessageFor(a => a.Password)
+                        </td>
+                    </tr>
+                </div>
+                <tr>
+                    <td></td>
+                    <td>
+                        <br />
+                        <button type="submit" class="btn btn-default" value="Login">Login</button>
+
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</body>
+</html>

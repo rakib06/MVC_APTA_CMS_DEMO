@@ -24,7 +24,18 @@ namespace MVC_APTA_CMS_DEMO.Controllers
             
             return View(adminlist);
         }
+        public ActionResult IndexPublic()
+        {
+            List<apta_admin> adminlist = new List<apta_admin>();
 
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                adminlist = db.apta_admins.ToList<apta_admin>();
+            }
+
+
+            return View(adminlist);
+        }
         //
         // GET: /Admin/Details/5
 

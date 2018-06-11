@@ -1,0 +1,52 @@
+﻿<br/>
+<br />
+<br />
+<br />
+
+@{
+    ViewBag.Title = "adminHome";
+}
+
+
+@if (ViewBag.Email1 != null  )
+{
+
+    <h2> Welcome  APTA Admin : </h2>
+    
+    <h4>Your Email ,@ViewBag.Email1</h4>
+
+
+    
+
+
+    <p>
+
+      
+        @{Html.RenderAction("adminNav", "Home");}
+        <p>
+            <a href="@Url.Action("conferencecreate","Home")" class="btn btn-default btn-lg btn-block" role="button">Create A new Conference </a>
+
+        </p>
+        <p>
+            <a href="@Url.Action("conferencecreate","Home")" class=" btn btn-default btn-lg btn-block" role="button">Create A new APTA ADMIN </a>
+
+        </p>
+        <p>
+            <a href="@Url.Action("conferencecreate","Home")" class="btn btn-default btn-lg btn-block" role="button">Manage Organization </a>
+
+        </p>   
+        <p>
+            <a href="@Url.Action("conferencecreate","Home")" class="btn btn-default btn-lg btn-block" role="button">Manage Attendee </a>
+
+        </p>  
+    </p>
+}
+else
+{
+    <p>
+   
+        @{Html.RenderAction("adminLogin", "Home");}
+    </p>
+   
+   
+}
