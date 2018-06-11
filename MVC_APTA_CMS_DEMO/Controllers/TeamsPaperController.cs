@@ -32,32 +32,49 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         //
         // GET: /TeamsPaper/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id=0)
         {
-            return View(new teams_paper());
+            teams_paper teamModel = new teams_paper();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                if (id != 0)
+                    teamModel= db.teams_papers.Where(x => x.DelegatesID == id).FirstOrDefault();
+                teamModel.ConferenceCollection = db.conference_events.ToList<conference_event>();
+
+            }
+
+           
+
+            return View(teamModel);
         }
-
-        //
         // POST: /TeamsPaper/Create
-
         [HttpPost]
-        public ActionResult Create(teams_paper teamsPaperModel)
+        public ActionResult Create(teams_paper org)
         {
+
+
+
+
             try
             {
                 using (ModelsCMS db = new ModelsCMS())
                 {
-                    db.teams_papers.Add(teamsPaperModel);
+                    db.teams_papers.Add(org);
                     db.SaveChanges();
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Attendee");
             }
             catch
             {
-                return View("Error");
+                return View("Required");
             }
+
         }
+        //
+       
+
+       
 
         //
         // GET: /TeamsPaper/Edit/5

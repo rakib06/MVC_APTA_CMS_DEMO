@@ -187,9 +187,13 @@
     <Content Include="Content\bootstrap\js\jquery.min.js" />
     <Content Include="Content\bootstrap\js\npm.js" />
     <Content Include="Content\logo\favicon-32x32.png" />
+    <Content Include="Content\logo\favicon.ico" />
     <Content Include="Content\logo\logo23.png" />
     <Content Include="Content\logo\profile.jpg" />
     <Content Include="favicon-32x32.png" />
+    <EmbeddedResource Include="favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Global.asax" />
     <EntityDeploy Include="Models\DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -225,20 +229,17 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Attendee\Index.cshtml" />
-    <Content Include="Views\Attendee\Create.cshtml" />
     <Content Include="Views\Conference\Index.cshtml" />
     <Content Include="Views\Conference\Create.cshtml" />
     <Content Include="Views\Organizer2\Index.cshtml" />
     <Content Include="Views\Organizer2\Create.cshtml" />
     <Content Include="Views\TeamsPaper\Index.cshtml" />
-    <Content Include="Views\TeamsPaper\Create.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\conferencename.cshtml" />
     <Content Include="Views\Organizer2\AddOrEdit.cshtml" />
     <Content Include="Views\Organizer\Index.cshtml" />
     <Content Include="Views\Organizer\Create.cshtml" />
     <Content Include="Views\Organizer\AddOrEdit.cshtml" />
-    <Content Include="Views\Home\orgRegister.cshtml" />
     <Content Include="Views\Shared\orgNav.cshtml" />
     <Content Include="Views\Home\orgHome.cshtml" />
     <Content Include="Views\Shared\adminNav.cshtml" />
@@ -252,6 +253,10 @@
     <Content Include="Views\Home\adcont.cshtml" />
     <Content Include="Views\Home\orgcont.cshtml" />
     <Content Include="Views\Admin\IndexPublic.cshtml" />
+    <Content Include="Views\Organizer\IndexPublic.cshtml" />
+    <Content Include="Views\TeamsPaper\Create.cshtml" />
+    <Content Include="Views\Attendee\Create.cshtml" />
+    <Content Include="Views\Shared\Required.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

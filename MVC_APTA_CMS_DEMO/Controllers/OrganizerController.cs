@@ -20,7 +20,15 @@ namespace MVC_APTA_CMS_DEMO.Controllers
             }
             return View(organizerlist);
         }
-
+        public ActionResult IndexPublic()
+        {
+            List<organizer> organizerlist = new List<organizer>();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                organizerlist = db.organizers.ToList<organizer>();
+            }
+            return View(organizerlist);
+        }
         //
         // GET: /Organizer/Details/5
 

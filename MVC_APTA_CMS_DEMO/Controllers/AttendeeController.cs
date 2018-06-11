@@ -32,32 +32,49 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         //
         // GET: /Attende/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id=0)
         {
-            return View(new member());
+            member memberModel = new member();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                if (id != 0)
+                   memberModel= db.members.Where(x => x.AttendeeID == id).FirstOrDefault();
+                memberModel.TeamCollection = db.teams_papers.ToList<teams_paper>();
+
+            }
+
+
+
+            return View(memberModel);
         }
-
-        //
-        // POST: /Attende/Create
-
-        [HttpPost]
-        public ActionResult Create(member membernmodel)
+         [HttpPost]
+        public ActionResult Create(member org)
         {
+
+
+              
+
             try
             {
                 using (ModelsCMS db = new ModelsCMS())
                 {
-                    db.members.Add(membernmodel);
+                    db.members.Add(org);
                     db.SaveChanges();
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Attendee");
             }
             catch
             {
                 return View("Error");
             }
+
         }
+
+        //
+        // POST: /Attende/Create
+
+        
 
         //
         // GET: /Attende/Edit/5

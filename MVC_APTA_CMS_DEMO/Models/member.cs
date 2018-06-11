@@ -11,6 +11,8 @@ namespace MVC_APTA_CMS_DEMO.Models
 {
     using System;
     using System.Collections.Generic;
+
+    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class member
     {
@@ -24,5 +26,7 @@ namespace MVC_APTA_CMS_DEMO.Models
         public int DelegatesID { get; set; }
     
         public virtual teams_paper teams_paper { get; set; }
+        [NotMapped]
+        public List<teams_paper> TeamCollection { get; set; }
     }
 }

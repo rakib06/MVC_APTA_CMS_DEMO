@@ -1,4 +1,6 @@
-﻿@model IEnumerable<MVC_APTA_CMS_DEMO.Models.teams_paper>
+﻿@using MVC_APTA_CMS_DEMO.Controllers
+@using MVC_APTA_CMS_DEMO.Models
+@model IEnumerable<MVC_APTA_CMS_DEMO.Models.teams_paper>
 
 @{
     Layout = null;
@@ -39,12 +41,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.PaperDomains)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.approve)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConferenceName)
-            </th>
+            
+           
             <th></th>
         </tr>
 
@@ -72,12 +70,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PaperDomains)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.approve)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ConferenceName)
-                </td>
+            
+               
                 <td>
                     @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) |
                     @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |

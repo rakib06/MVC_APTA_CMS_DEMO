@@ -33,5 +33,6 @@ namespace MVC_APTA_CMS_DEMO.Models
         public virtual apta_admin apta_admin { get; set; }
         public virtual ICollection<teams_paper> teams_paper { get; set; }
         public virtual ICollection<organizer> organizers { get; set; }
+        public virtual ICollection<teams_paper> teamPapers { get; set; }
     }
 }

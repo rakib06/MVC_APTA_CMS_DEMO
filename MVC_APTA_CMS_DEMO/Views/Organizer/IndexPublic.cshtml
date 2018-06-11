@@ -9,13 +9,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>IndexPublic</title>
 </head>
 <body>
-@{Html.RenderAction("adminNav", "Home");}
-<p>
-    Organizer lists
-</p>
+    @{Html.RenderAction("testNav", "Home");}
+    <p>
+        Organizer lists
+    </p>
 <table class="table table-bordered">
     <tr>
         <th>
@@ -36,12 +36,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.approve)
-        </th>
+           
         <th>
             @Html.DisplayNameFor(model => model.conferenceId)
         </th>
@@ -72,12 +67,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.approve)
-            </td>
+               
+               
             <td>
                 @Html.DisplayFor(modelItem => item.conferenceId)
             </td>
@@ -85,13 +76,17 @@
                 @Html.DisplayFor(modelItem => item.reg_date)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.OrganizerId}) |
-                @Html.ActionLink("Details", "Details", new {id = item.OrganizerId}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.OrganizerId})
+                    
+                @Html.ActionLink("Details", "Details", new { id = item.OrganizerId }) 
+                
             </td>
         </tr>
     }
 
 </table>
+    <p>
+        <a href="@Url.Action("Create","TeamsPaper")" class="btn btn-default btn-lg btn-block" role="button">Create Team and join with us for upcoming Conference , 1 member as a delegates is allowed </a>
+
+    </p>
 </body>
 </html>

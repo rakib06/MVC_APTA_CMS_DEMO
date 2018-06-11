@@ -55,7 +55,10 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         {
             return PartialView("contact_partial");
         }
-       
+        public ActionResult Required()
+        {
+            return PartialView("Required");
+        }
         
        
         public ActionResult orgLogin()
