@@ -27,6 +27,7 @@ namespace MVC_APTA_CMS_DEMO.Models
         public string TeamName { get; set; }
         [Required]
         public string OrganizationType { get; set; }
+
         public string PaperName { get; set; }
         public string PaperLink { get; set; }
         public string PaperInbrief { get; set; }
@@ -38,6 +39,6 @@ namespace MVC_APTA_CMS_DEMO.Models
         public virtual conference_event conference_event { get; set; }
         public virtual ICollection<member> members { get; set; }
         [NotMapped]
-        public List<conference_event> ConferenceCollection { get; set; }
+        public List <conference_event> ConferenceCollection { get; set; }
     }
 }

@@ -9,7 +9,6 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
 
 namespace MVC_APTA_CMS_DEMO.Models
 {
@@ -25,12 +24,10 @@ namespace MVC_APTA_CMS_DEMO.Models
         public string Location { get; set; }
         [Required]
         public string Email { get; set; }
-
         public string Website { get; set; }
         [Required]
         public string Phone { get; set; }
         public string Description { get; set; }
-        [Required]
         public string Password { get; set; }
         public Nullable<int> approve { get; set; }
         public Nullable<int> conferenceId { get; set; }

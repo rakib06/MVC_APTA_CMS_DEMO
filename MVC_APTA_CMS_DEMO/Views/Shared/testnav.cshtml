@@ -2,16 +2,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="@Url.Content("~/content/logo/favicon.ico")" /><title>APTA Conference Management </title>
-    <meta name="description" content="The description of my page" />
-</head>
-<body style="height:1500px">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="@Url.Content("~/content/logo/favicon.ico")"/><title>APTA Conference Management </title>
+    <meta name="description" content="The description of my page"/>
+
+
 
 
    
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.min.css" />
 <script src="~/Content/bootstrap/js/jquery.min.js"></script>
 <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
@@ -29,45 +30,45 @@
     }
 </style>
 
+</head>
+
+<body style="height:1500px">
 
 
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="http://apta.asia"><img src="~/Content/logo/logo23.png"> </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="@Url.Action("IndexPublic", "Conference")">Conference</a></li>
+                <li><a href="@Url.Action("IndexPublic", "Organizer")">Oraginer </a></li>
+                <li><a href="@Url.Action("IndexPublic", "Attendee")">Attendee</a></li>
+                <li><a href="@Url.Action("IndexPublic", "TeamsPaper")">Team</a></li>
+                <li><a href="@Url.Action("IndexPublic","Admin")">Admin</a></li>
+                <li><a href="@Url.Action("Create","TeamsPaper")">Team Registration</a></li>
 
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login and Registration <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("adminLogin","Home")">Apta Admin Login</a></li>
+                        <li><a href="@Url.Action("orgLogin","Home")">Organization Login</a></li>
+                        <li><a href="@Url.Action("AddOrEdit","Organizer")">Organization Registration </a></li>
+                    </ul>
+                </li>
 
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="http://apta.asia"><img src="~/Content/logo/logo23.png"> </a>
+                <li class=""><a href="@Url.Action("contact","Home")">Contact </a></li>
+            </ul>
         </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="@Url.Action("IndexPublic", "Conference")" >Conference</a></li>
-            <li><a href="@Url.Action("IndexPublic", "Organizer")">Oraginer </a></li>
-            <li><a href="@Url.Action("IndexPublic", "Attendee")" >Attendee</a></li>
-            <li><a href="@Url.Action("IndexPublic", "TeamsPaper")">Team</a></li>
-            <li><a href="@Url.Action("IndexPublic","Admin")" >Admin</a></li>
-            <li><a href="@Url.Action("Create","TeamsPaper")">Team Registration</a></li>
-            
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login and Registration <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="@Url.Action("adminLogin","Home")">Apta Admin Login</a></li>
-                    <li><a href="@Url.Action("orgLogin","Home")">Organization Login</a></li>
-                    <li><a href="@Url.Action("AddOrEdit","Organizer")">Organization Registration </a></li>
-                </ul>
-            </li>
-
-            <li class=""><a href="@Url.Action("contact","Home")">Contact </a></li>
-        </ul>
-    </div>
-</nav>
+    </nav>
 
 
-<br/>
+    <br />
 
-<br />
+    <br />
 
-<br />
+    <br />
 
 
 </body>
