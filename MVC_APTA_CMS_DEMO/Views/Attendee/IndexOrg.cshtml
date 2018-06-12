@@ -5,7 +5,10 @@
 }
 
 
-@{Html.RenderAction("testNav", "Home");}
+
+    @{Html.RenderAction("orgtNav", "Home");}
+
+
 <table class="table table-bordered">
     <tr>
         <th>
@@ -63,9 +66,9 @@
                 @Html.DisplayFor(modelItem => item.DelegatesID)
             </td>
             <td>
-              
-                @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) 
-              
+
+                @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */})
+
             </td>
         </tr>
     }

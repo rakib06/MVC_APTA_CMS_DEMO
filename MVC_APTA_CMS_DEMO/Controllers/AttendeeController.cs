@@ -29,6 +29,15 @@ namespace MVC_APTA_CMS_DEMO.Controllers
             }
             return View(memberlist);
         }
+        public ActionResult IndexOrg()
+        {
+            List<member> memberlist = new List<member>();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                memberlist = db.members.ToList<member>();
+            }
+            return View(memberlist);
+        }
         //
         // GET: /Attende/Details/5
 

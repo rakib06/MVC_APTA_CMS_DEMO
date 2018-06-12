@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MVC_APTA_CMS_DEMO.Models.conference_event>
+
+@{
+    Layout = null;
+}
+
+
+@{Html.RenderAction("orgtNav", "Home");}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_reg_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Chairman)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Locations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.short_description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_reg_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Chairman)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locations)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.short_description)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */})
+            </td>
+        </tr>
+    }
+
+</table>

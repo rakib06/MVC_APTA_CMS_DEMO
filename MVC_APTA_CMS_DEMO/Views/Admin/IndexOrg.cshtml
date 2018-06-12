@@ -1,16 +1,25 @@
-﻿@model IEnumerable<MVC_APTA_CMS_DEMO.Models.member>
+﻿@model IEnumerable<MVC_APTA_CMS_DEMO.Models.apta_admin>
 
 @{
     Layout = null;
 }
 
+  
+@{Html.RenderAction("orgtNav","Home");}
+   
 
-@{Html.RenderAction("testNav", "Home");}
-<table class="table table-bordered">
+
+
+
+
+
+
+<table class="table table-striped">
+
+
+
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AttendeeID)
-        </th>
+        <
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -24,23 +33,16 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Country)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Address)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DelegatesID)
-        </th>
-        <th></th>
+
+
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AttendeeID)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -54,21 +56,11 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DelegatesID)
-            </td>
-            <td>
-              
-                @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) 
-              
-            </td>
+
+
         </tr>
     }
 
 </table>
-

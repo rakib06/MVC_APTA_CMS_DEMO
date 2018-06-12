@@ -256,7 +256,10 @@
     <Content Include="Views\Conference\IndexPublic.cshtml" />
     <Content Include="Views\Attendee\IndexPublic.cshtml" />
     <Content Include="Views\TeamsPaper\IndexPublic.cshtml" />
-    <Content Include="Views\Conference\ConferenceOrg.cshtml" />
+    <Content Include="Views\Admin\IndexOrg.cshtml" />
+    <Content Include="Views\Attendee\IndexOrg.cshtml" />
+    <Content Include="Views\TeamsPaper\IndexOrg.cshtml" />
+    <Content Include="Views\Conference\IndexOrg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

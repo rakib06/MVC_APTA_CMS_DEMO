@@ -1,0 +1,70 @@
+﻿@using MVC_APTA_CMS_DEMO.Controllers
+@using MVC_APTA_CMS_DEMO.Models
+@model IEnumerable<MVC_APTA_CMS_DEMO.Models.teams_paper>
+
+@{
+    Layout = null;
+}
+
+
+@{Html.RenderAction("orgtNav", "Home");}
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DelegatesID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaperName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PaperInbrief)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaperDomains)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DelegatesID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizationType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaperName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PaperInbrief)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaperDomains)
+            </td>
+
+
+            <td>
+
+                @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */})
+
+            </td>
+        </tr>
+    }
+
+</table>
