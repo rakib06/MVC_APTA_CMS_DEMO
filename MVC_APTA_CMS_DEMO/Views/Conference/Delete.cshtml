@@ -1,0 +1,91 @@
+﻿@model MVC_APTA_CMS_DEMO.Models.conference_event
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>conference_event</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Name)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.StartDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.StartDate)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.EndDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.EndDate)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Chairman)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Chairman)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Locations)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Locations)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.short_description)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.short_description)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.last_reg_date)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.last_reg_date)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.conferenceID)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.conferenceID)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.admin_id)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.admin_id)
+        </div>
+    </fieldset>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        <p>
+            <input type="submit" value="Delete" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    }
+
+</body>
+</html>

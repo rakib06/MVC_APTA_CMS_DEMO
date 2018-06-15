@@ -40,10 +40,15 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         }
         //
         // GET: /Conference/Details/5
-
+      
         public ActionResult Details(int id)
         {
-            return View();
+            conference_event conferenceModel = new conference_event();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                conferenceModel = db.conference_events.Where(x => x.conferenceID == id).FirstOrDefault();
+            }
+            return View(conferenceModel);
         }
 
         //
@@ -61,8 +66,7 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         public ActionResult Create(conference_event conferenceModel)
         {
 
-            try
-            {
+           
                 using (ModelsCMS db = new ModelsCMS())
                 {
                     db.conference_events.Add(conferenceModel);
@@ -70,11 +74,8 @@ namespace MVC_APTA_CMS_DEMO.Controllers
                 }
                 
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View("Error");
-            }
+            
+            
         }
 
         //
@@ -82,25 +83,27 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            conference_event ConferenceModel = new conference_event();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                ConferenceModel = db.conference_events.Where(x => x.conferenceID == id).FirstOrDefault();
+            }
+            return View(ConferenceModel);
         }
 
         //
-        // POST: /Conference/Edit/5
+        // POST: /Attende/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(conference_event ConferenceModel)
         {
-            try
+            using (ModelsCMS db = new ModelsCMS())
             {
-                // TODO: Add update logic here
+                db.Entry(ConferenceModel).State = System.Data.EntityState.Modified;
+                db.SaveChanges();
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         //
@@ -108,7 +111,12 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            conference_event ConferenceModel = new conference_event();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                ConferenceModel = db.conference_events.Where(x => x.conferenceID == id).FirstOrDefault();
+            }
+            return View(ConferenceModel);
         }
 
         //
@@ -117,16 +125,15 @@ namespace MVC_APTA_CMS_DEMO.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
+            using (ModelsCMS db = new ModelsCMS())
             {
-                // TODO: Add delete logic here
+                conference_event confModel = db.conference_events.Where(x => x.conferenceID == id).FirstOrDefault();
+                db.conference_events.Remove(confModel);
+                db.SaveChanges();
 
-                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction("Index");
         }
     }
 }

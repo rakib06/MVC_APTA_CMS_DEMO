@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace MVC_APTA_CMS_DEMO.Models
 {
     using System;
@@ -19,13 +21,18 @@ namespace MVC_APTA_CMS_DEMO.Models
             this.teams_paper = new HashSet<teams_paper>();
             this.organizers = new HashSet<organizer>();
         }
-    
+        [DisplayName("Conference Name")]
         public string Name { get; set; }
+        [DisplayName("Start Date")]
         public Nullable<System.DateTime> StartDate { get; set; }
+        [DisplayName("End Date")]
         public Nullable<System.DateTime> EndDate { get; set; }
+
         public string Chairman { get; set; }
         public string Locations { get; set; }
+        [DisplayName("Short Description")]
         public string short_description { get; set; }
+        [DisplayName("Last Registration Date")]
         public Nullable<System.DateTime> last_reg_date { get; set; }
         public int conferenceID { get; set; }
         public Nullable<int> admin_id { get; set; }

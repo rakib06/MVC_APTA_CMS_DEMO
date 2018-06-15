@@ -6,7 +6,9 @@
 
 
 @{Html.RenderAction("adminNav", "Home");}
-
+<div class="well well-lg">
+    <h3> Attendee request handle </h3>
+</div>
     <table class="table table-bordered">
         <tr>
             <th>
@@ -33,6 +35,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.DelegatesID)
             </th>
+            <th></th>
             <th></th>
         </tr>
 
@@ -63,10 +66,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DelegatesID)
                 </td>
+            <td>
+                <input type="radio" name="action" value="Approve" />Approve
+            </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) |
-                    @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
-                    @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
+                <input type="radio" name="action" value="Reject"/>Reject  
+                </td>
+                <td>
+                    <button type="button"  class="btn-info">Save</button>
+                   
                 </td>
             </tr>
         }

@@ -8,9 +8,9 @@
 
 
 @{Html.RenderAction("adminNav", "Home");}
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="well well-lg">
+    <h3> Attendee Team request handle </h3>
+    </div>
     <table class="table table-bordered">
         <tr>
             <th>
@@ -34,9 +34,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.PaperDomains)
             </th>
-            
-           
+
+
             <th></th>
+            <td></td>
+            <td></td>
         </tr>
 
         @foreach (var item in Model)
@@ -63,12 +65,17 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PaperDomains)
                 </td>
-            
-               
+
+
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) |
-                    @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
-                    @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
+                    <input type="radio" name="action" value="Approve" />Approve
+                </td>
+                <td>
+                    <input type="radio" name="action" value="Reject" />Reject
+                </td>
+                <td>
+                    <button type="button" class="btn-info">Save</button>
+
                 </td>
             </tr>
         }

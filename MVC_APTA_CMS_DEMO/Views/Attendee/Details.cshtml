@@ -1,0 +1,79 @@
+﻿@model MVC_APTA_CMS_DEMO.Models.member
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <fieldset>
+        <legend>member</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.AttendeeID)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.AttendeeID)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.FirstName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FirstName)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.LastName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastName)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Phone)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Phone)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Email)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Country)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Country)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Address)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Address)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DelegatesID)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DelegatesID)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

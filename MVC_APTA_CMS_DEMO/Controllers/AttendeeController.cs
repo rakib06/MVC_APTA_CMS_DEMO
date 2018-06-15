@@ -43,7 +43,12 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            member memberModel =new member();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                memberModel = db.members.Where(x => x.AttendeeID == id).FirstOrDefault();
+            }
+            return View(memberModel);
         }
 
         //
@@ -98,25 +103,27 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+        member memberModel = new member();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                memberModel = db.members.Where(x => x.AttendeeID == id).FirstOrDefault();
+            }
+            return View(memberModel);
         }
 
         //
         // POST: /Attende/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(member memberModel)
         {
-            try
+            using (ModelsCMS db = new ModelsCMS())
             {
-                // TODO: Add update logic here
+                db.Entry(memberModel).State = System.Data.EntityState.Modified;
+                db.SaveChanges();
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         //

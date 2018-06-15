@@ -13,9 +13,9 @@
 </head>
 <body>
 @{Html.RenderAction("adminNav", "Home");}
-<p>
-    Organizer lists
-</p>
+<div class="well well-lg">
+    <h3> Organizer request handle </h3>
+</div>
 <table class="table table-bordered">
     <tr>
         <th>
@@ -36,18 +36,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.approve)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.conferenceId)
-        </th>
+       
+      
+        
         <th>
             @Html.DisplayNameFor(model => model.reg_date)
         </th>
+        <th></th>
+        <th></th>
         <th></th>
     </tr>
 
@@ -72,22 +68,21 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.approve)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.conferenceId)
-            </td>
+          
+          
+          
             <td>
                 @Html.DisplayFor(modelItem => item.reg_date)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.OrganizerId}) |
-                @Html.ActionLink("Details", "Details", new {id = item.OrganizerId}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.OrganizerId})
+                <input type="radio" name="action" value="1" />Approve 
+            </td>
+            <td>
+                <input type="radio" name="action" value="0"/>Reject  
+            </td>
+            <td>
+                <button type="button" onclick="location.href='<%: Url.Action(" approveReject", "organizer" ) %>'" class="btn-info">Save</button>
+                   
             </td>
         </tr>
     }

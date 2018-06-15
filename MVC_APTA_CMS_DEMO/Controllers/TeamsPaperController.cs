@@ -98,27 +98,28 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            teams_paper teamModel = new teams_paper();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                teamModel = db.teams_papers.Where(x => x.DelegatesID == id).FirstOrDefault();
+            }
+            return View(teamModel);
         }
 
         //
-        // POST: /TeamsPaper/Edit/5
+        // POST: /Attende/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(member teamModel)
         {
-            try
+            using (ModelsCMS db = new ModelsCMS())
             {
-                // TODO: Add update logic here
+                db.Entry(teamModel).State = System.Data.EntityState.Modified;
+                db.SaveChanges();
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
-
         //
         // GET: /TeamsPaper/Delete/5
 

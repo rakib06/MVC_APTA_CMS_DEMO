@@ -77,27 +77,28 @@ namespace MVC_APTA_CMS_DEMO.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            organizer orgModel = new organizer();
+            using (ModelsCMS db = new ModelsCMS())
+            {
+                orgModel = db.organizers.Where(x => x.OrganizerId == id).FirstOrDefault();
+            }
+            return View(orgModel);
         }
 
         //
-        // POST: /Organizer/Edit/5
+        // POST: /Attende/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(member orgModel)
         {
-            try
+            using (ModelsCMS db = new ModelsCMS())
             {
-                // TODO: Add update logic here
+                db.Entry(orgModel).State = System.Data.EntityState.Modified;
+                db.SaveChanges();
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
-
         //
         // GET: /Organizer/Delete/5
 

@@ -189,10 +189,10 @@
     <Content Include="Content\logo\favicon-32x32.png" />
     <Content Include="Content\logo\favicon.ico" />
     <Content Include="Content\logo\logo23.png" />
-    <Content Include="Content\logo\profile.jpg" />
     <EmbeddedResource Include="favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="Content\logo\profile.jpg" />
     <Content Include="Global.asax" />
     <EntityDeploy Include="Models\DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -260,6 +260,12 @@
     <Content Include="Views\Attendee\IndexOrg.cshtml" />
     <Content Include="Views\TeamsPaper\IndexOrg.cshtml" />
     <Content Include="Views\Conference\IndexOrg.cshtml" />
+    <Content Include="Views\Attendee\Details.cshtml" />
+    <Content Include="Views\Conference\Details.cshtml" />
+    <Content Include="Views\Attendee\Edit.cshtml" />
+    <Content Include="Views\Organizer\Edit.cshtml" />
+    <Content Include="Views\Conference\Delete.cshtml" />
+    <Content Include="Views\Conference\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

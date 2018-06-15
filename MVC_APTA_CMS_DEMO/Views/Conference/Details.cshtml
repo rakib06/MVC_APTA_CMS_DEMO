@@ -1,0 +1,98 @@
+﻿@model MVC_APTA_CMS_DEMO.Models.conference_event
+
+@{
+    Layout = null;
+}
+
+@{Html.RenderAction("adminNav", "Home");}
+
+
+
+
+
+
+<fieldset class="scheduler-border" >
+    <legend class="scheduler-border">Conference Details </legend>
+    <div class="control-group"> <b>
+    @Html.DisplayNameFor(model => model.conferenceID)
+</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.conferenceID)
+    </div>
+    <div class="display-label"><b>
+    @Html.DisplayNameFor(model => model.Name)
+</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label"> <b>
+        @Html.DisplayNameFor(model => model.StartDate)
+        </b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StartDate)
+    </div>
+
+    <div class="display-label"><b>
+    @Html.DisplayNameFor(model => model.EndDate)
+
+</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDate)
+    </div>
+
+    <div class="display-label">
+        <div class="display-label"><b>
+    @Html.DisplayNameFor(model => model.Chairman)
+</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Chairman)
+    </div>
+
+    <div class="display-label">
+        <b>
+            @Html.DisplayNameFor(model => model.Locations)
+        </b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Locations)
+    </div>
+
+    <div class="display-label">
+        <b>
+            @Html.DisplayNameFor(model => model.short_description)
+        </b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.short_description)
+    </div>
+
+    <div class="display-label"><b>
+    @Html.DisplayNameFor(model => model.last_reg_date)
+</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.last_reg_date)
+    </div>
+
+  
+
+        </div>
+
+
+</fieldset>
+
+    <p>
+        <a href="@Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) " class=" btn btn-default btn-lg btn-block" role="button">Edit </a>
+
+    </p>
+    <p>
+        <a href=" @Html.ActionLink("Back to List", "Index")" class=" btn btn-default btn-lg btn-block" role="button">Back to list </a>
+
+    </p>
+ 

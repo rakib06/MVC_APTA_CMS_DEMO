@@ -1,0 +1,43 @@
+﻿@model MVC_APTA_CMS_DEMO.Models.organizer
+
+@{
+    Layout = null;
+}
+
+@{Html.RenderAction("adminNav", "Home");}
+
+    
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <div class="well well-lg">
+
+
+                <h3> organizer  Approve panel</h3>
+                <h4>set the approve value to "1" for approving the organizer </h4>
+            </div>
+           
+
+          
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.approve)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.approve)
+                @Html.ValidationMessageFor(model => model.approve)
+            </div>
+
+       
+
+            <p>
+                <input type="submit" value="Approve"/>
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
